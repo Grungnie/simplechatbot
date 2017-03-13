@@ -36,10 +36,6 @@ class Response:
         response = requests.post(self.config['response_auth_url'], data)
         resData = response.json()
 
-        print(resData)
-        print(resData.text)
-        print(resData.headers)
-
         self.headers = {"Authorization": "{} {}".format(resData["token_type"], resData["access_token"])}
 
     def reply_to_activity(self, message, serviceUrl=None, channelId=None, replyToId=None, fromInfo=None,
