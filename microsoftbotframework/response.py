@@ -62,4 +62,5 @@ class Response:
         }
 
         result = requests.post(responseURL, json=response_json, headers=self.headers)
-        print(result)
+        print(result.status)
+        print(result.json())
