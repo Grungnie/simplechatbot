@@ -33,16 +33,19 @@ class Response:
                 "client_secret": self.config['app_client_secret'],
                 "scope": "https://api.botframework.com/.default"
                }
-        response = requests.post(self.config['response_auth_url'],data)
+        response = requests.post(self.config['response_auth_url'], data)
         resData = response.json()
 
-        self.headers = {"Authorization": "{} {}".format(resData["token_type"],resData["access_token"])}
+        print(resData)
+        print(resData.text)
+        print(resData.headers)
 
-    def reply_to_activity(self, message, serviceUrl=None,channelId=None,replyToId=None,fromInfo=None,
-                recipient=None,type=None,conversation=None):
+        self.headers = {"Authorization": "{} {}".format(resData["token_type"], resData["access_token"])}
+
+    def reply_to_activity(self, message, serviceUrl=None, channelId=None, replyToId=None, fromInfo=None,
+                recipient=None, type=None, conversation=None):
         if self.config['mode'] == 'prod':
             self.authenticate()
-            print(self.headers)
         else:
             self.headers = None
 
