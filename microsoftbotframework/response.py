@@ -62,7 +62,8 @@ class Response:
         }
 
         result = requests.post(responseURL, json=response_json, headers=self.headers)
-        print(response_json)
-        print(result)
-        print(result.text)
-        print(result.headers)
+        print('responseURL:', responseURL)
+        print('response_json:', response_json)
+        print('result:', result)
+        print('result.text:', result.text)
+        print('result.headers', result.headers)
