@@ -21,11 +21,11 @@ config = ConfigSectionMap('CELERY')
 flask_app.config.update(
     CELERY_BROKER_URL=config['celery_broker_url'],
     CELERY_RESULT_BACKEND=config['celery_result_backend'],
-    BROKER_POOL_LIMIT=2,
-    CELERY_REDIS_MAX_CONNECTIONS=2,
-    BROKER_TRANSPORT_OPTIONS={
-        'max_connections': 2,
-    },
+    # BROKER_POOL_LIMIT=2,
+    # CELERY_REDIS_MAX_CONNECTIONS=2,
+    # BROKER_TRANSPORT_OPTIONS={
+    #     'max_connections': 2,
+    # },
 )
 config = None
 
