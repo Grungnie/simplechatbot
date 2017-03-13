@@ -42,13 +42,14 @@ class Response:
                 recipient=None, type=None, conversation=None):
         if self.config['mode'] == 'prod':
             self.authenticate()
+            print(self.headers)
         else:
             self.headers = None
 
         conversation_id = self['conversation']["id"] if conversation is None else conversation['id']
         replyToId = self['id'] if replyToId is None else replyToId
 
-        self['serviceUrl'] = 'https://webchat.botframework.com'
+        self['serviceUrl'] = 'https://webchat.botframework.com/'
         responseURL = "{}v3/conversations/{}/activities/{}".format(self["serviceUrl"], conversation_id, replyToId)
         #responseURL = "{}v3/conversations/{}/activities".format(self["serviceUrl"], conversation_id, replyToId)
 
