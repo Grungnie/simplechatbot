@@ -61,4 +61,5 @@ class Response:
             "replyToId": replyToId
         }
 
-        requests.post(responseURL,json=response_json,headers=self.headers)
+        result = requests.post(responseURL, json=response_json, headers=self.headers)
+        print(result)
