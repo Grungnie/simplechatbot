@@ -1,12 +1,12 @@
 import microsoftbotframework.runcelery
 from microsoftbotframework.msbot import MsBot
 from tasks import *
-import os
+import subprocess
 
 import trainchatbot
 
 # Start celery workers
-os.system('celery -A microsoftbotframework.runcelery.celery worker')
+subprocess.Popen('celery -A microsoftbotframework.runcelery.celery worker', shell=True)
 
 bot = MsBot()
 #bot.add_process(hello_world)
