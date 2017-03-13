@@ -17,7 +17,7 @@ def hello_world(message):
         response.reply_to_activity('Hi!')
 
 
-# @celery.task()
+@celery.task()
 def chat_bot_respond(message):
     if message["type"]=="message":
         global session_manager
