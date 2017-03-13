@@ -42,6 +42,7 @@ class Response:
                 recipient=None,type=None,conversation=None):
         if self.config['mode'] == 'prod':
             self.authenticate()
+            print(self.headers)
         else:
             self.headers = None
 
