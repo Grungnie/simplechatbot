@@ -61,9 +61,11 @@ class Response:
             "replyToId": replyToId
         }
 
-        result = requests.post(responseURL, json=response_json, headers=self.headers)
         print('responseURL:', responseURL)
         print('response_json:', response_json)
+
+        result = requests.post(responseURL, json=response_json, headers=self.headers)
+
         print('result:', result)
         print('result.text:', result.text)
-        print('result.headers', result.headers)
+        print('result.headers:', result.headers)
