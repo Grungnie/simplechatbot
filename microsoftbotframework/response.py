@@ -54,7 +54,7 @@ class Response:
         #responseURL = "{}v3/conversations/{}/activities".format(self["serviceUrl"], conversation_id, replyToId)
 
         response_json = {
-            "from": {'id': self.config['app_client_id'], "name": self["recipient"]["name"]} if fromInfo is None else fromInfo,
+            "from": {'id': self.config['app_client_id'], "name": "SmartHarry"} if fromInfo is None else fromInfo,
             "type": 'message' if type is None else type,
             "timestamp": datetime.datetime.now().strftime("%Y-%m-%dT%H:%M:%S.%f%zZ"),
             "conversation": self['conversation'] if conversation is None else conversation,
