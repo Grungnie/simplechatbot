@@ -6,7 +6,7 @@ import subprocess
 import trainchatbot
 
 # Start celery workers
-subprocess.Popen('celery -A microsoftbotframework.runcelery.celery worker', shell=True)
+subprocess.Popen('celery -A microsoftbotframework.runcelery.celery --concurrency=2 worker', shell=True)
 
 bot = MsBot()
 #bot.add_process(hello_world)
