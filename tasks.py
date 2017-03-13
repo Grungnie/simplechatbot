@@ -24,7 +24,7 @@ def chat_bot_respond(message):
         chatbot = ChatBot(
             'Smart Harry',
             trainer='chatterbot.trainers.ChatterBotCorpusTrainer',
-            storage_adapter="chatterbot.storage.MongoDatabaseAdapter"
+#            storage_adapter="chatterbot.storage.MongoDatabaseAdapter"
         )
 
         response = Response(message)
