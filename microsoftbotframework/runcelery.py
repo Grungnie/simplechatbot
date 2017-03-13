@@ -20,7 +20,8 @@ flask_app = Flask(__name__)
 config = ConfigSectionMap('CELERY')
 flask_app.config.update(
     CELERY_BROKER_URL=config['celery_broker_url'],
-    CELERY_RESULT_BACKEND=config['celery_result_backend']
+    CELERY_RESULT_BACKEND=config['celery_result_backend'],
+    BROKER_POOL_LIMIT=None
 )
 config = None
 
