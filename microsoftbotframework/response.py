@@ -28,10 +28,10 @@ class Response:
         return True if key in self.data else False
 
     def authenticate(self):
-        data = {"grant_type":"client_credentials",
-                "client_id":self.config['app_client_id'],
-                "client_secret":self.config['app_client_secret'],
-                "scope":"https://graph.microsoft.com/.default"
+        data = {"grant_type": "client_credentials",
+                "client_id": self.config['app_client_id'],
+                "client_secret": self.config['app_client_secret'],
+                "scope": "https://api.botframework.com/.default"
                }
         response = requests.post(self.config['response_auth_url'],data)
         resData = response.json()
