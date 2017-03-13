@@ -48,8 +48,9 @@ class Response:
         conversation_id = self['conversation']["id"] if conversation is None else conversation['id']
         replyToId = self['id'] if replyToId is None else replyToId
 
-        #responseURL = "{}v3/conversations/{}/activities/{}".format(self["serviceUrl"], conversation_id, replyToId)
-        responseURL = "{}v3/conversations/{}/activities".format(self["serviceUrl"], conversation_id, replyToId)
+        self['serviceUrl'] = 'https://webchat.botframework.com'
+        responseURL = "{}v3/conversations/{}/activities/{}".format(self["serviceUrl"], conversation_id, replyToId)
+        #responseURL = "{}v3/conversations/{}/activities".format(self["serviceUrl"], conversation_id, replyToId)
 
         response_json = {
             "from": self["recipient"] if fromInfo is None else fromInfo,
@@ -58,7 +59,7 @@ class Response:
             "conversation": self['conversation'] if conversation is None else conversation,
             "recipient": self["from"] if recipient is None else recipient,
             "text": message,
- #           "replyToId": replyToId
+            "replyToId": replyToId
         }
 
         print('responseURL:', responseURL)
