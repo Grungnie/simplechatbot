@@ -1,14 +1,8 @@
 import requests, datetime
-from microsoftbotframework.helpers import ConfigSectionMap
 import os
 
 class Response:
     def __init__(self, data):
-        self.config = ConfigSectionMap('CORE')
-        if self.config['mode'] == 'test':
-            self.config = ConfigSectionMap(['CORE', 'TEST'])
-        else:
-            self.config = ConfigSectionMap(['CORE', 'PROD'])
         self.data = data
 
     def __getitem__(self, key):
@@ -29,21 +23,21 @@ class Response:
         return True if key in self.data else False
 
     def authenticate(self):
+        response_auth_url = "https://login.microsoftonline.com/botframework.com/oauth2/v2.0/token"
         data = {"grant_type": "client_credentials",
                 "client_id": os.environ['APP_CLIENT_ID'],
                 "client_secret": os.environ['APP_CLIENT_SECRET'],
                 "scope": "https://api.botframework.com/.default"
                }
-        response = requests.post(self.config['response_auth_url'], data)
+        response = requests.post(response_auth_url, data)
         resData = response.json()
 
         self.headers = {"Authorization": "{} {}".format(resData["token_type"], resData["access_token"])}
 
     def reply_to_activity(self, message, serviceUrl=None, channelId=None, replyToId=None, fromInfo=None,
-                recipient=None, type=None, conversation=None):
-        if self.config['mode'] == 'prod':
+                recipient=None, type=None, conversation=None, auth=True):
+        if auth:
             self.authenticate()
-            print(self.headers)
         else:
             self.headers = None
 

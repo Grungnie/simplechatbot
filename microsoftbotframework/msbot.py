@@ -1,11 +1,9 @@
 from flask import Flask, request
-from microsoftbotframework.helpers import ConfigSectionMap
 from celery.local import PromiseProxy
 import os
 
 class MsBot:
     def __init__(self):
-        self.config = ConfigSectionMap('CELERY')
         self.processes = []
 
         self.app = Flask(__name__)

@@ -1,6 +1,5 @@
 from flask import Flask
 from celery import Celery
-from microsoftbotframework.helpers import ConfigSectionMap
 import os
 
 def make_celery(app):
