@@ -1,4 +1,4 @@
-from microsoftbotframework.response import Response
+from microsoftbotframework import Response
 import celery
 from chatterbot import ChatBot
 from chatterbot.conversation.session import ConversationSessionManager

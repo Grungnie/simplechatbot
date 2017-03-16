@@ -9,15 +9,15 @@ chatbot = ChatBot(
     database_uri=os.environ['MONGO_DATABASE_URI']
 )
 
-# Train based on the english corpus
-#chatbot.train('chatterbot.corpus.english')
-
-# Pull down the full vocab and train
-import subprocess
-process = subprocess.Popen("git clone https://github.com/gunthercox/chatterbot-corpus.git", shell=True)
-process.wait()
-chatbot.train('chatterbot-corpus.chatterbot_corpus.data.english')
-subprocess.Popen("rm -R chatterbot-corpus", shell=True)
-
+if os.environ['ENVIRONMENT'] == 'PROD':
+    # Pull down the full vocab and train
+    import subprocess
+    process = subprocess.Popen("git clone https://github.com/gunthercox/chatterbot-corpus.git", shell=True)
+    process.wait()
+    chatbot.train('chatterbot-corpus.chatterbot_corpus.data.english')
+    subprocess.Popen("rm -R chatterbot-corpus", shell=True)
+else:
+    # Train based on the local corpus
+    chatbot.train('chatterbot.corpus.english')
 
 chatbot = None
