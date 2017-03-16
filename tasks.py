@@ -4,19 +4,6 @@ from chatterbot import ChatBot
 from chatterbot.conversation.session import ConversationSessionManager
 import os
 
-# @celery.task()
-# def respond_to_conversation_update(message):
-#     if message["type"]=="conversationUpdate":
-#         response = Response(message)
-#         message_response = 'Have fun with the Microsoft Bot Framework'
-#         response.reply_to_activity(message_response,recipient={"id":response["conversation"]["id"]})
-
-
-def hello_world(message):
-    if message["type"] == "message" and message["text"] == 'hello world':
-        response = Response(message)
-        response.reply_to_activity('Hi!')
-
 
 @celery.task()
 def chat_bot_respond(message):

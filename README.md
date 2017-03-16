@@ -16,7 +16,7 @@ Install required packages using pip
 pip install requirements.txt
 ```
 To start the server run python main.py
-##### Configure Async Tasks
+#### Configure Async Tasks
 Add the broker-url and result-backend uri to the environment vars
 ```
 export CELERY_BROKER_URL=redis://localhost:6379
@@ -26,28 +26,9 @@ To use celery install and configure celery and its backend and run
 ```sh
 celery -A microsoftbotframework.runcelery.celery worker --loglevel=info
 ```
-    
-## Configure
-Every time a message is recieved all of the methods passed to the chatbot via the MsBot.add_process() method will be called.
-#### Base Definition
-Every function is passed the message from Microsoft when it is called.
-```python
-def BaseTask(message):
-    pass
+#### Configure Chatterbot Database
+For this release I use a mongodb database. Export the uri and database name as follows.
 ```
-#### Example Definition
-This will echo back all messages recieved.
-```python
-def RespondToConversation(message):
-    if message["type"]=="message":
-        response = Response(message)
-        message_response = message["text"]
-        response.reply_to_activity(message_response)
-```
-#### Async Definition
-This method will be executed asynchronously. Several Celery decorators are available, check the documentation.
-```python
-@celery.task()
-def AsyncTask(message):
-    sleep(10)
+export MONGO_DATABASE_NAME=chatterbot-database
+export MONGO_DATABASE_URI=mongodb://127.0.0.1:27017
 ```
