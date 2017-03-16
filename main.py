@@ -4,12 +4,9 @@ if __name__ == "__main__":
     from tasks import *
     import subprocess
 
+    # Train the bot if it hasn't already
     import trainchatbot
 
-    # Start celery workers
-    #subprocess.Popen('celery -A microsoftbotframework.runcelery.celery worker --concurrency=10', shell=True)
-
     bot = MsBot()
-    #bot.add_process(hello_world)
     bot.add_process(chat_bot_respond)
     bot.run()
