@@ -1,12 +1,12 @@
 from chatterbot import ChatBot
-import chatterbot
+import os
 
 chatbot = ChatBot(
     'Smart Harry',
     trainer='chatterbot.trainers.ChatterBotCorpusTrainer',
     storage_adapter="chatterbot.storage.MongoDatabaseAdapter",
-    database='heroku_503f2tll',
-    database_uri='mongodb://createuser:MatthewBrown@ds129600.mlab.com:29600/heroku_503f2tll'
+    database=os.environ['MONGO_DATABASE_NAME'],
+    database_uri=os.environ['MONGO_DATABASE_URI']
 )
 
 # Train based on the english corpus

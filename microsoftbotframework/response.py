@@ -1,5 +1,6 @@
 import requests, datetime
 from microsoftbotframework.helpers import ConfigSectionMap
+import os
 
 class Response:
     def __init__(self, data):
@@ -29,8 +30,8 @@ class Response:
 
     def authenticate(self):
         data = {"grant_type": "client_credentials",
-                "client_id": self.config['app_client_id'],
-                "client_secret": self.config['app_client_secret'],
+                "client_id": os.environ['APP_CLIENT_ID'],
+                "client_secret": os.environ['APP_CLIENT_SECRET'],
                 "scope": "https://api.botframework.com/.default"
                }
         response = requests.post(self.config['response_auth_url'], data)
@@ -49,8 +50,6 @@ class Response:
         conversation_id = self['conversation']["id"] if conversation is None else conversation['id']
         replyToId = self['id'] if replyToId is None else replyToId
 
-        #self['serviceUrl'] = 'https://webchat.botframework.com/'
-        #responseURL = "{}v3/conversations/{}/activities/{}".format(self["serviceUrl"], conversation_id, replyToId)
         responseURL = "{}v3/conversations/{}/activities".format(self["serviceUrl"], conversation_id, replyToId)
 
         response_json = {

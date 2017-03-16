@@ -2,6 +2,7 @@ from microsoftbotframework.response import Response
 import celery
 from chatterbot import ChatBot
 from chatterbot.conversation.session import ConversationSessionManager
+import os
 
 # @celery.task()
 # def respond_to_conversation_update(message):
@@ -25,8 +26,8 @@ def chat_bot_respond(message):
             'Smart Harry',
             trainer='chatterbot.trainers.ChatterBotCorpusTrainer',
             storage_adapter="chatterbot.storage.MongoDatabaseAdapter",
-            database='heroku_503f2tll',
-            database_uri='mongodb://createuser:MatthewBrown@ds129600.mlab.com:29600/heroku_503f2tll'
+            database=os.environ['MONGO_DATABASE_NAME'],
+            database_uri=os.environ['MONGO_DATABASE_URI']
         )
 
         response = Response(message)
