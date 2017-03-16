@@ -36,7 +36,7 @@ class Response:
 
     def reply_to_activity(self, message, serviceUrl=None, channelId=None, replyToId=None, fromInfo=None,
                 recipient=None, type=None, conversation=None):
-        if os.environ['APP_CLIENT_SECRET'] == 'PROD':
+        if os.environ['ENVIRONMENT'] == 'PROD':
             self.authenticate()
         else:
             self.headers = None
