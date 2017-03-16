@@ -64,3 +64,4 @@ class Response:
         print('result:', result)
         print('result.text:', result.text)
         print('result.headers:', result.headers)
+        print('self.headers:', self.headers)
