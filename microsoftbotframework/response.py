@@ -35,8 +35,8 @@ class Response:
         self.headers = {"Authorization": "{} {}".format(resData["token_type"], resData["access_token"])}
 
     def reply_to_activity(self, message, serviceUrl=None, channelId=None, replyToId=None, fromInfo=None,
-                recipient=None, type=None, conversation=None, auth=True):
-        if auth:
+                recipient=None, type=None, conversation=None):
+        if os.environ['APP_CLIENT_SECRET'] == 'PROD':
             self.authenticate()
         else:
             self.headers = None
