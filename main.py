@@ -3,10 +3,11 @@ if __name__ == "__main__":
     from microsoftbotframework.msbot import MsBot
     from tasks import *
     import subprocess
+    import os
 
     # Train the bot if it hasn't already
     import trainchatbot
 
-    bot = MsBot()
+    bot = MsBot(port=os.environ['PORT'])
     bot.add_process(chat_bot_respond)
     bot.run()
