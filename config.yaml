@@ -1,2 +1,2 @@
 celery:
-    broker_pool_limit: 1
+    broker_pool_limit: None
