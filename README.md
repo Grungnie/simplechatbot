@@ -1,5 +1,5 @@
-# Microsoft Bot Framework
-Microsoft Bot Framework is a wrapper for the Microsoft Bot API by Microsoft. It uses Flask to recieve the post messages from microsoft and Celery to complete Async tasks.
+# Simple Chatbot
+This is a simple chatbot using the ChatterBot library. It also makes use of the microsoftbotframwork. It is currently running on heroku.
 
 ## To run this app
 Follow all instructions for https://github.com/Grungnie/microsoftbotframework
