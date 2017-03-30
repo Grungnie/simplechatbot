@@ -1,6 +1,0 @@
-Flask==0.12
-celery==4.0.2
-requests==2.13
-redis==2.10.5
-ChatterBot==0.5.5
-microsoftbotframework==0.1.10
