@@ -3,4 +3,5 @@ Flask==0.12
 celery==4.0.2
 requests==2.13
 redis==2.10.5
-PyJwt==1.4.0
+git+git://github.com/jpadilla/pyjwt
+microsoftbotframework==0.1.11
