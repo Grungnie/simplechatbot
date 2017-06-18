@@ -1,4 +1,4 @@
-from microsoftbotframework import Response
+from microsoftbotframework import ReplyToActivity
 import celery
 from chatterbot import ChatBot
 from chatterbot.conversation.session import ConversationSessionManager
@@ -17,7 +17,7 @@ def chat_bot_respond(message):
             database_uri=os.environ['MONGO_DATABASE_URI']
         )
 
-        response = Response(message)
-
         message_response = chatbot.get_response(message["text"]).text
-        response.reply_to_activity(message_response)
+
+        ReplyToActivity(fill=message,
+                        text=message_response).send()
