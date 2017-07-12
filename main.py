@@ -1,5 +1,5 @@
 if __name__ == "__main__":
-    import microsoftbotframework.runcelery
+    #import microsoftbotframework.runcelery
     from microsoftbotframework.msbot import MsBot
     from tasks import *
     import subprocess
