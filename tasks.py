@@ -1,14 +1,16 @@
 from microsoftbotframework import ReplyToActivity
 import celery
 from chatterbot import ChatBot
-from chatterbot.conversation.session import ConversationSessionManager
 import os
 
 
 @celery.task()
+def chat_bot_respond_async(message):
+    chat_bot_respond(message)
+
+
 def chat_bot_respond(message):
     if message["type"]=="message":
-        global session_manager
         chatbot = ChatBot(
             'Smart Harry',
             trainer='chatterbot.trainers.ChatterBotCorpusTrainer',
@@ -21,3 +23,4 @@ def chat_bot_respond(message):
 
         ReplyToActivity(fill=message,
                         text=message_response).send()
+

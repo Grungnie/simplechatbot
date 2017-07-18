@@ -1,5 +1,6 @@
-cryptography==1.8.1
-PyJWT==1.5.0
+cryptography
+PyJWT
 redis
 pymongo
-microsoftbotframework==0.2.6
+ChatterBot
+microsoftbotframework==0.2.7
