@@ -3,5 +3,6 @@ cryptography
 PyJWT
 redis
 pymongo
+gunicorn
 ChatterBot
 nltk
